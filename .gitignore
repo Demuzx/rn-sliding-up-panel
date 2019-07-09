@@ -41,3 +41,5 @@ jspm_packages
 jsconfig.json
 
 .DS_Store
+.idea
+package-lock.json

@@ -41,6 +41,7 @@ class SlidingUpPanel extends React.PureComponent {
     snappingPoints: PropTypes.arrayOf(PropTypes.number),
     minimumVelocityThreshold: PropTypes.number,
     minimumDistanceThreshold: PropTypes.number,
+    timeConstant: PropTypes.number,
     avoidKeyboard: PropTypes.bool,
     onBackButtonPress: PropTypes.func,
     onDragStart: PropTypes.func,
@@ -70,6 +71,7 @@ class SlidingUpPanel extends React.PureComponent {
     onDragEnd: () => {},
     onMomentumDragStart: () => {},
     onMomentumDragEnd: () => {},
+    timeConstant: Constants.TIME_CONSTANT,
     allowMomentum: true,
     allowDragging: true,
     showBackdrop: true,
@@ -243,7 +245,7 @@ class SlidingUpPanel extends React.PureComponent {
       ])
 
       const remainingDistance = animatedValue - closestPoint
-      const velocity = remainingDistance / Constants.TIME_CONSTANT
+      const velocity = remainingDistance / this.props.timeConstant
 
       this._flick.start({
         velocity,
@@ -370,7 +372,7 @@ class SlidingUpPanel extends React.PureComponent {
   _triggerAnimation(options = {}) {
     const animatedValue = this.props.animatedValue.__getValue()
     const remainingDistance = animatedValue - options.toValue
-    const velocity = options.velocity || remainingDistance / Constants.TIME_CONSTANT // prettier-ignore
+    const velocity = options.velocity || remainingDistance / this.props.timeConstant // prettier-ignore
 
     this._flick.start({
       velocity,
