@@ -4,4 +4,4 @@ export const KEYBOARD_TRANSITION_DURATION = 160
 export const KEYBOARD_EXTRA_MARGIN = 75
 export const DEFAULT_FRICTION = 0.998
 export const DELTA_THRESHOLD = 0.5
-export const TIME_CONSTANT = 325
+export const TIME_CONSTANT = 150
